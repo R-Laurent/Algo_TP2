@@ -15,13 +15,13 @@ public class Levenstein {
                     //System.out.println("i : " + i + " mot: " + s1Array[i] + " j : " + j + " mot: " + s2Array[j] + " numéro : " + matrice[i][j]);
                     matrice[i][j] = min(matrice[i][j-1],matrice[i-1][j-1],matrice[i-1][j]) + 1;
                     System.out.println("j et i > 0 : " + matrice[i][j] + " i : " + i + " j : " + j);}
-                if (s2Array[j] != s1Array[i] && j==0 && i==0){ matrice[i][j] = 0; }
+                //if (s2Array[j] != s1Array[i] && j==0 && i==0){ matrice[i][j] = 0; }
                 if (s2Array[j] != s1Array[i] && j>0 && i==0){ matrice[i][j]=matrice[i][j-1]+1;}
                 if (s2Array[j] != s1Array[i] && j==0 && i>0){matrice[i][j]=matrice[i-1][j]+1;}
                 System.out.println(" i : " + i + " j : "  + j + " matrice : " +  matrice[i][j]);
             }
         }
-        System.out.println("longueur : ");
+        System.out.println("longueur : " + matrice[s1Array.length-1][s2Array.length-1]);
     }
 
     public int min(int a, int b, int c){
