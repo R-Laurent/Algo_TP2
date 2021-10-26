@@ -18,13 +18,6 @@ public class Reader {
             dico.add(line);
         }
     }
-    /*public String toStringDico(){
-        String x = "";
-        for (int i=0; i<dico.size();i++){
-            x = x +  + "\n";
-        }
-        return x;
-    }*/
 
     public boolean test(String s){
         return dico.contains(s);
