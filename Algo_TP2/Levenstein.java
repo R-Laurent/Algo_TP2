@@ -19,13 +19,13 @@ public class Levenstein {
             System.out.println("les premières cas de la première colonne : " + matrice[i][0]);
         }
 
-        for (int i=0; i<s1Array.length;i++){
-            for (int j=0; j<s2Array.length;j++){
+        for (int i=1; i<s1Array.length;i++){
+            for (int j=1; j<s2Array.length;j++){
                 if (s2Array[j] == s1Array[i] && j>0 && i>0 ) {matrice[i][j] = min(matrice[i][j-1],matrice[i-1][j-1],matrice[i-1][j]);
                     System.out.println("cas 1 : " + "i : " + i + " j : " + j);} //cas 1
                 if (s2Array[j] != s1Array[i] && j>0 && i>0 ){matrice[i][j] = min(matrice[i][j-1],matrice[i-1][j-1],matrice[i-1][j]) + 1;
                     System.out.println("cas 2 : " + "i : " + i + " j : " + j);} // cas 2
-                if (s2Array[j] != s1Array[i] && j>0 && i==0){ matrice[i][j]=matrice[i][j-1]+1;
+               /* if (s2Array[j] != s1Array[i] && j>0 && i==0){ matrice[i][j]=matrice[i][j-1]+1;
                     System.out.println("cas 3 : " + "i : " + i + " j : " + j);} // cas 3
                 if (s2Array[j] != s1Array[i] && j==0 && i>0){matrice[i][j]=matrice[i-1][j]+1;
                     System.out.println("cas 4 : " + "i : " + i + " j : " + j);} // cas 4
@@ -34,7 +34,7 @@ public class Levenstein {
                     System.out.println("cas 5 : " + "i : " + i + " j : " + j);} // cas 5
 
                 if (s2Array[j] == s1Array[i] && i==0 && j==0){matrice[i][j]=0;
-                    System.out.println("cas 6 : " + "i : " + i + " j : " + j);} // cas 6
+                    System.out.println("cas 6 : " + "i : " + i + " j : " + j);} // cas 6 */
 
                 System.out.println(matrice[i][j]);
             }
