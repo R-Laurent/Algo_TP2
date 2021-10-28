@@ -7,12 +7,12 @@ public class main {
         Reader miniDico = new Reader("files/minidico.txt");
         Reader dico = new Reader("files/dico.txt");
         Reader fautes = new Reader("files/fautes.txt");
-        Levenstein L = new Levenstein("algorithmique", "logarytmique");
-//        Levenstein L1 = new Levenstein("jul", "rrrr");
+  //      Levenstein L = new Levenstein("algorithmique", "logarytmique");
+       Levenstein L1 = new Levenstein("jul", "jel");
         //Trigrams t1 = new Trigrams(dico);
 
-        System.out.println("le nombre de correction à faire est : " + L.compteur);
-       // System.out.println("le nombre de correction à faire est : " + L1.compteur);
+   //     System.out.println("le nombre de correction à faire est : " + L.compteur);
+        System.out.println("le nombre de correction à faire est : " + L1.compteur);
 
         System.out.println(dico.test("<chauve>"));
 
