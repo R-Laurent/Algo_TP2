@@ -7,19 +7,31 @@ public class main {
         Reader miniDico = new Reader("files/minidico.txt");
         Reader dico = new Reader("files/dico.txt");
         Reader fautes = new Reader("files/fautes.txt");
-        Levenstein L = new Levenstein("jul", "jel");
+        Levenstein L = new Levenstein("algorithmique", "logarytmique");
+//        Levenstein L1 = new Levenstein("jul", "rrrr");
+        //Trigrams t1 = new Trigrams(dico);
 
-        System.out.println(L.compteur);
+        System.out.println("le nombre de correction à faire est : " + L.compteur);
+       // System.out.println("le nombre de correction à faire est : " + L1.compteur);
 
         System.out.println(dico.test("<chauve>"));
-        String w1 = "<bonjour>";
+
+        //System.out.println(t1.trigrams.get("jul"));
+
+        System.out.println(System.nanoTime());
+
+        /*String w1 = "<bonjour>";
         String w2 = "<bonheur>";
+        String w3 = "<jul>";
+        String w4 = "<julien>";
         /*for (int i=0; i<w2.length()-2;i++){
             System.out.println(w2.substring(i,i+3));
-        }*/
+        }
         ArrayList<String> words = new ArrayList<String>();
         words.add(w1);
         words.add(w2);
+        words.add(w3);
+        words.add(w4);
         HashMap<String,ArrayList<String>> trigrams = new HashMap<>();
         ArrayList<ArrayList<String>> tri1 = new ArrayList<>();
         for (int i=0;i<words.size();i++){
@@ -52,7 +64,7 @@ public class main {
         System.out.println("values : " + trigrams.values());
         System.out.println("test : " + trigrams.get("<bo"));
         trigrams.get("<bo").add("<bonjour>");
-        System.out.println("test2 : " + trigrams.get("<bo"));
+        System.out.println("test2 : " + trigrams.get("<bo"));*/
 
     }
 }
