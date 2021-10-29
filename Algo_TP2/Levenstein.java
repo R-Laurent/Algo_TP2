@@ -3,6 +3,8 @@ public class Levenstein {
     int compteur;
 
     public Levenstein(String s1,String s2){
+        s1 = "!"+s1;
+        s2 = "!"+s2;
 
         char[] s1Array = s1.toCharArray();
         char[] s2Array = s2.toCharArray();
@@ -39,7 +41,7 @@ public class Levenstein {
                 System.out.println(matrice[i][j]);
             }
         }
-        compteur =  + matrice[s1Array.length][s2Array.length];
+        compteur =  + matrice[s1Array.length-1][s2Array.length-1];
     }
 
     public int min(int a, int b, int c){
