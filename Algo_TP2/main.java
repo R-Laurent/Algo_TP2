@@ -7,7 +7,7 @@ public class main {
         Reader miniDico = new Reader("files/minidico.txt");
         Reader dico = new Reader("files/dico.txt");
         Reader fautes = new Reader("files/fautes.txt");
-        Levenstein L = new Levenstein("logarytmique", "algorithmique");
+        Levenstein L = new Levenstein("algorithmique", "logarytmique");
        //Levenstein L1 = new Levenstein("rrrr", "ffffa");
         //Trigrams t1 = new Trigrams(dico);
 

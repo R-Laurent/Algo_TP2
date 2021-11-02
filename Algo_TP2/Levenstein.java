@@ -8,45 +8,24 @@ public class Levenstein {
 
         char[] s1Array = s1.toCharArray();
         char[] s2Array = s2.toCharArray();
-        System.out.println("longuer s1 : " + s1.length());
-        System.out.println("longuer s2 : " + s2.length());
-        int[][] matrice = new int[s1Array.length][s1Array.length];
+        int[][] matrice = new int[s1Array.length][s2Array.length];
 
         for (int i=0;i<matrice[0].length;i++){
             matrice[0][i] = i;
-            System.out.println("la première ligne  : " + matrice[0][i]);
         }
         for (int i=0; i<s1Array.length;i++){
             matrice[i][0] = i;
-            System.out.println("les premières cases de la première colonne : " + matrice[i][0]);
         }
-
+        int cout;
         for (int i=1; i<s1Array.length;i++){
-            for (int j=1; j<s1Array.length;j++){
-                if (s2Array[j] == s1Array[i]) {matrice[i][j] = min(matrice[i][j-1],matrice[i-1][j-1],matrice[i-1][j]);
-                    System.out.println("cas 1 : " + "i : " + i + " j : " + j);} //cas 1
-                if (s2Array[j] != s1Array[i]){matrice[i][j] = min(matrice[i][j-1],matrice[i-1][j-1],matrice[i-1][j]) + 1;
-                    System.out.println("cas 2 : " + "i : " + i + " j : " + j);} // cas 2
+            for (int j=1; j<s2Array.length;j++){
+                if (s2Array[j] == s1Array[i]) { cout = 0;}
+                else {cout = 1;}
+                matrice[i][j] = min(matrice[i][j-1]+1,matrice[i-1][j-1] + cout ,matrice[i-1][j] + 1);
 
-
-
-                /* if (s2Array[j] != s1Array[i] && j>0 && i==0){ matrice[i][j]=matrice[i][j-1]+1;
-                    System.out.println("cas 3 : " + "i : " + i + " j : " + j);} // cas 3
-                if (s2Array[j] != s1Array[i] && j==0 && i>0){matrice[i][j]=matrice[i-1][j]+1;
-                    System.out.println("cas 4 : " + "i : " + i + " j : " + j);} // cas 4
-
-                if (s2Array[j] != s1Array[i] && i==0 && j==0){matrice[i][j]=1;
-                    System.out.println("cas 5 : " + "i : " + i + " j : " + j);} // cas 5
-
-                if (s2Array[j] == s1Array[i] && i==0 && j==0){matrice[i][j]=0;
-                    System.out.println("cas 6 : " + "i : " + i + " j : " + j);} // cas 6 */
-
-                System.out.println(matrice[i][j]);
             }
         }
-        int ecart = Math.abs(s2Array.length-s1Array.length);
-        compteur =  ecart + matrice[s1Array.length-1][s1Array.length-1];
-        System.out.println("fin matrice : " + matrice[s1Array.length-1][s1Array.length-1]);
+        compteur = matrice[s1Array.length-1][s2Array.length-1];
     }
 
     public int min(int a, int b, int c){
