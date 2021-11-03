@@ -1,30 +1,47 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class main {
     public static void main(String[] args) throws IOException {
+        double debut = System.nanoTime();
         Reader miniDico = new Reader("files/minidico.txt");
         Reader dico = new Reader("files/dico.txt");
         Reader fautes = new Reader("files/fautes.txt");
         Levenstein L = new Levenstein("algorithmique", "logarytmique");
-       //Levenstein L1 = new Levenstein("rrrr", "ffffa");
-        //Trigrams t1 = new Trigrams(dico);
-
+        Trigrams t1 = new Trigrams(dico);
+        double fin = System.nanoTime();
+        double temps = (fin - debut)/1000000000;
+        System.out.println("le temps mis est : " + temps);
         System.out.println("le nombre de correction à faire est : " + L.compteur);
-  //      System.out.println("le nombre de correction à faire est : " + L1.compteur);
 
         System.out.println(dico.test("<chauve>"));
 
-        //System.out.println(t1.trigrams.get("jul"));
+        System.out.println(t1.trigrams.get("jul"));
 
         System.out.println(System.nanoTime());
 
-        /*String w1 = "<bonjour>";
+        HashMap<String,Integer> map = new HashMap<>();
+        map.put("jul",2);
+        map.put("koba",3);
+        map.put("nekfeu",1);
+        map.put("alors",4);
+        List<Map.Entry<String,Integer>> list = new LinkedList<Map.Entry<String, Integer>>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        for (Map.Entry<String,Integer> item: list){
+            System.out.println(item);
+        }
+
+
+/*        String w1 = "<bonjour>";
         String w2 = "<bonheur>";
         String w3 = "<jul>";
         String w4 = "<julien>";
-        /*for (int i=0; i<w2.length()-2;i++){
+        for (int i=0; i<w2.length()-2;i++){
             System.out.println(w2.substring(i,i+3));
         }
         ArrayList<String> words = new ArrayList<String>();
@@ -39,11 +56,13 @@ public class main {
             ArrayList<String> tri = new ArrayList<String>();
             //ArrayList<String> liste = new ArrayList<String>();
             for (int j=0;j<word.length()-2;j++){
-                ArrayList<String> liste = new ArrayList<String>();
                 String tr = word.substring(j,j+3);
-                tri.add(tr);
-                trigrams.put(tr,liste);
-                //trigrams.get(tr).add(word);
+                if (trigrams.keySet().contains(tr)==false){
+                    ArrayList<String> liste = new ArrayList<String>();
+                    trigrams.put(tr,liste);}
+                //trigrams.put(tr,liste);
+                //else {trigrams.put(tr,liste);}
+                trigrams.get(tr).add(word);
             }
             //for (int k=0;k<tri.size();k++){trigrams.get(tri.get(k)).add(word);}
         }
