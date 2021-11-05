@@ -3,6 +3,7 @@ import java.util.*;
 public class Correction {
     Trigrams t;
     public HashSet<String> trigramCommun(String word, Trigrams t){
+        HashMap<String,Integer> occurences = new HashMap<String, Integer>();
         HashSet<String> c = new HashSet<>();
         ArrayList<String> tri = getTrigrams(word);
         c.add(word);
@@ -10,8 +11,21 @@ public class Correction {
             for (int j=0;j<t.trigrams.get(tri.get(i)).size();j++){
                 String motCommun = t.trigrams.get(tri.get(i)).get(j);
                 c.add(motCommun);
+                Integer compteur = 0;
+                for (int k=0;k<tri.size();k++){
+                    if (t.trigrams.get(tri.get(k)).contains(motCommun)){compteur++;}
+                }
+                occurences.put(motCommun,compteur);
             }
         }
+        List<Map.Entry<String,Integer>> list = new LinkedList<Map.Entry<String, Integer>>(occurences.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
         return c;
     }
 
