@@ -1,14 +1,9 @@
 import java.util.*;
 
-public class Correction {
-    Trigrams t;
-    ArrayList<ArrayList<String>> corrections = new ArrayList<>();
-    public Correction(String word, Trigrams t,ArrayList<String> fautes){
-        for (int i=0;i<fautes.size();i++){corrections.add(correction1Mot(fautes.get(i),t));
-            System.out.println("allo");}
-    }
+public class correctionTest {
+    ArrayList<String> correction;
 
-    public ArrayList<String> correction1Mot(String word, Trigrams t){
+    public correctionTest(String word, Trigrams t){
         ArrayList<String> correction  = new ArrayList<>();
         HashMap<String,Integer> occurences = new HashMap<String, Integer>();
         HashSet<String> c = new HashSet<>();
@@ -21,12 +16,16 @@ public class Correction {
                     String motCommun = t.trigrams.get(tri.get(i)).get(j);
                     c.add(motCommun);
                     Integer compteur = 0;
-                    for (int k = 0; k < tri.size(); k++) {
+                    if (t.trigrams.get(tri.get(i)).contains(motCommun) == true) {
+                        compteur++;
+                    }
+                    
+                    /*for (int k = 0; k < tri.size(); k++) {
                         if (t.trigrams.get(tri.get(k))==null){k++;}
                         if (t.trigrams.get(tri.get(k)).contains(motCommun) == true) {
                             compteur++;
                         }
-                    }
+                    }*/
                     occurences.put(motCommun, compteur);
                 }
             }
@@ -41,7 +40,7 @@ public class Correction {
 
         HashMap<String,Integer> distance = new HashMap<>();
 
-        for (int i=0;i<10;i++){
+        for (int i=0;i<100;i++){
             Levenstein L = new Levenstein(list.get(i).getKey(),word);
             distance.put(list.get(i).getKey(),L.compteur);
         }
@@ -54,30 +53,10 @@ public class Correction {
         });
 
         for (int i=0;i<5;i++){correction.add(lesDistances.get(i).getKey());}
-        return correction;
-    }
 
-    public List<Map.Entry<String,Integer>> nbrOccurence(HashSet<String> commun, ArrayList<String> tri){
-        HashMap<String,Integer> occurences = new HashMap<String, Integer>();
-        ArrayList<String> c = new ArrayList<>(commun);
-        for (int i=1;i<c.size();i++){ // iverser clef/valeur et chercher sur le net comment trié map par valeurs
-            String mot = c.get(i);
-            Integer compteur = 0;
-            for (int j=0;j<tri.size();j++){
-                if (t.trigrams.get(tri.get(j)).contains(mot)){compteur++;}
-            }
-            occurences.put(mot,compteur);
-        }
-        List<Map.Entry<String,Integer>> list = new LinkedList<Map.Entry<String, Integer>>(occurences.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue().compareTo(o1.getValue());
-            }
-        });
-        return list;
-    }
+        this.correction = correction;
 
+    }
     public ArrayList<String> getTrigrams(String word){
         ArrayList<String> tri = new ArrayList<>();
         for (int j=0;j<word.length()-2;j++){

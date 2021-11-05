@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Reader {
-    HashSet<String> dico = new HashSet<String>();
+    ArrayList<String> dico;
 
     public Reader(String fichier) throws IOException {
+        HashSet<String> dico = new HashSet<String>();
         BufferedReader br = new BufferedReader(new FileReader(fichier));
         String line;
         String gauche = "<";
@@ -17,6 +18,7 @@ public class Reader {
             line = gauche + line + droite;
             dico.add(line);
         }
+        this.dico = new ArrayList<>(dico);
     }
 
     public boolean test(String s){

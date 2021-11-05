@@ -9,10 +9,14 @@ public class main {
         Reader fautes = new Reader("files/fautes.txt");
         Levenstein L = new Levenstein("algorithmique", "logarytmique");
         Trigrams t1 = new Trigrams(dico);
+        //Correction c1 = new Correction("<abbatage>",t1, fautes.dico);
+        correctionTest ct1 = new correctionTest("abbréviation",t1);
         double fin = System.nanoTime();
         double temps = (fin - debut)/1000000000;
+        //System.out.println(c1.corrections);
+        System.out.println(ct1.correction);
         System.out.println("le temps mis est : " + temps);
-        System.out.println("le nombre de correction à faire est : " + L.compteur);
+        System.out.println("le nombre de corrections à faire est : " + L.compteur);
 
         System.out.println(dico.test("<chauve>"));
 
@@ -32,9 +36,14 @@ public class main {
                 return o2.getValue().compareTo(o1.getValue());
             }
         });
-        for (Map.Entry<String,Integer> item: list){
-            System.out.println(item);
+
+        for (int i=0;i< list.size();i++){
+            System.out.println(list.get(i).getValue());
         }
+
+        /*for (Map.Entry<String,Integer> item: list){
+            System.out.println(item);
+        }*/
 
 
 /*        String w1 = "<bonjour>";
