@@ -8,7 +8,7 @@ public class Correction {
     }
 
     public ArrayList<String> correction1Mot(String word, Trigrams t){
-        System.out.println(word);
+        //System.out.println(word);
         ArrayList<String> correction  = new ArrayList<>();
         HashMap<String,Integer> occurences = new HashMap<String, Integer>();
         HashSet<String> c = new HashSet<>();
