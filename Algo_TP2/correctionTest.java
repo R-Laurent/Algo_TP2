@@ -4,6 +4,7 @@ public class correctionTest {
     ArrayList<String> correction;
 
     public correctionTest(String word, Trigrams t){
+        System.out.println(word);
         ArrayList<String> correction  = new ArrayList<>();
         HashMap<String,Integer> occurences = new HashMap<String, Integer>();
         HashSet<String> c = new HashSet<>();
@@ -12,21 +13,15 @@ public class correctionTest {
         for (int i=0;i<tri.size();i++){
             if (t.trigrams.get(tri.get(i))==null){i++;}
             else {
+                ArrayList<String> mots = new ArrayList<>(t.trigrams.get(tri.get(i)));
                 for (int j = 0; j < t.trigrams.get(tri.get(i)).size(); j++) {
-                    String motCommun = t.trigrams.get(tri.get(i)).get(j);
+                    String motCommun = mots.get(j);
                     c.add(motCommun);
-                    Integer compteur = 0;
-                    if (t.trigrams.get(tri.get(i)).contains(motCommun) == true) {
-                        compteur++;
+                    if (t.trigrams.get(tri.get(i)).contains(motCommun) == true && occurences.containsKey(motCommun) == true) {
+                        occurences.computeIfPresent(motCommun,(k,v)-> v+1);
                     }
-                    
-                    /*for (int k = 0; k < tri.size(); k++) {
-                        if (t.trigrams.get(tri.get(k))==null){k++;}
-                        if (t.trigrams.get(tri.get(k)).contains(motCommun) == true) {
-                            compteur++;
-                        }
-                    }*/
-                    occurences.put(motCommun, compteur);
+                    else {Integer compteur = 1; occurences.put(motCommun, compteur);}
+
                 }
             }
         }

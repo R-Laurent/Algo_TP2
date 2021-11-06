@@ -4,11 +4,11 @@ public class Correction {
     Trigrams t;
     ArrayList<ArrayList<String>> corrections = new ArrayList<>();
     public Correction(String word, Trigrams t,ArrayList<String> fautes){
-        for (int i=0;i<fautes.size();i++){corrections.add(correction1Mot(fautes.get(i),t));
-            System.out.println("allo");}
+        for (int i=0;i<fautes.size();i++){corrections.add(correction1Mot(fautes.get(i),t));}
     }
 
     public ArrayList<String> correction1Mot(String word, Trigrams t){
+        System.out.println(word);
         ArrayList<String> correction  = new ArrayList<>();
         HashMap<String,Integer> occurences = new HashMap<String, Integer>();
         HashSet<String> c = new HashSet<>();
@@ -17,17 +17,15 @@ public class Correction {
         for (int i=0;i<tri.size();i++){
             if (t.trigrams.get(tri.get(i))==null){i++;}
             else {
-                for (int j = 0; j < t.trigrams.get(tri.get(i)).size(); j++) {
-                    String motCommun = t.trigrams.get(tri.get(i)).get(j);
+                ArrayList<String> mots = new ArrayList<>(t.trigrams.get(tri.get(i)));
+                for (int j = 0; j < mots.size(); j++) {
+                    String motCommun = mots.get(j);
                     c.add(motCommun);
-                    Integer compteur = 0;
-                    for (int k = 0; k < tri.size(); k++) {
-                        if (t.trigrams.get(tri.get(k))==null){k++;}
-                        if (t.trigrams.get(tri.get(k)).contains(motCommun) == true) {
-                            compteur++;
-                        }
+                    if (t.trigrams.get(tri.get(i)).contains(motCommun) == true && occurences.containsKey(motCommun) == true) {
+                        occurences.computeIfPresent(motCommun,(k,v)-> v+1);
                     }
-                    occurences.put(motCommun, compteur);
+                    else {Integer compteur = 1; occurences.put(motCommun, compteur);}
+
                 }
             }
         }

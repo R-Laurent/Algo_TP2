@@ -9,12 +9,12 @@ public class main {
         Reader fautes = new Reader("files/fautes.txt");
         Levenstein L = new Levenstein("algorithmique", "logarytmique");
         Trigrams t1 = new Trigrams(dico);
-        //Correction c1 = new Correction("<abbatage>",t1, fautes.dico);
-        correctionTest ct1 = new correctionTest("abbréviation",t1);
+        Correction c1 = new Correction("<abbatage>",t1, fautes.dico);
+        //correctionTest ct1 = new correctionTest("abbréviation",t1);
         double fin = System.nanoTime();
         double temps = (fin - debut)/1000000000;
-        //System.out.println(c1.corrections);
-        System.out.println(ct1.correction);
+        System.out.println(c1.corrections);
+       // System.out.println(ct1.correction);
         System.out.println("le temps mis est : " + temps);
         System.out.println("le nombre de corrections à faire est : " + L.compteur);
 
@@ -29,6 +29,7 @@ public class main {
         map.put("koba",3);
         map.put("nekfeu",1);
         map.put("alors",4);
+        map.computeIfPresent("nekfeu",(k,v) -> v+10);
         List<Map.Entry<String,Integer>> list = new LinkedList<Map.Entry<String, Integer>>(map.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
             @Override

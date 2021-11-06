@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Trigrams {
-    HashMap<String,ArrayList<String>> trigrams = new HashMap<>();
+    HashMap<String,HashSet<String>> trigrams = new HashMap<>();
     public Trigrams(Reader r){
         ArrayList<String> dico = new ArrayList<>(r.dico);
         for (int i=0;i<dico.size();i++){
@@ -13,7 +13,7 @@ public class Trigrams {
                 String tr = word.substring(j,j+3);
                 tri.add(tr);
                 if (trigrams.keySet().contains(tr) == false){
-                    ArrayList<String> liste = new ArrayList<String>();
+                    HashSet<String> liste = new HashSet<String>();
                     trigrams.put(tr,liste);}
                 trigrams.get(tr).add(word);
             }
