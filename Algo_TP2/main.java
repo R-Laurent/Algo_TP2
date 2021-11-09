@@ -12,7 +12,8 @@ public class main {
         double fin = System.nanoTime();
         double temps = (fin - debut)/1000000000;
         //System.out.println(ct1.correction);
-        //System.out.println("nombre de mots corriger : "+c1.corrections.size());
+        //System.out.println("nombre de mots corrigés : "+c1.corrections.size());
         System.out.println("le temps mis est : " + temps);
+        System.out.println(fautes.dico.size());
     }
 }

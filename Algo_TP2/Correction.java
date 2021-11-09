@@ -4,8 +4,12 @@ public class Correction {
     Trigrams t;
     ArrayList<ArrayList<String>> corrections = new ArrayList<>();
     public Correction(Trigrams t,ArrayList<String> fautes){
-        for (int i=0;i<fautes.size();i++){corrections.add(correction1Mot(fautes.get(i),t));
-            System.out.println(fautes.get(i)+" --> "+corrections.get(i));}
+        HashSet<String> fautesContient = new HashSet<>(fautes);
+        for (int i=0;i<fautes.size();i++){
+            if (fautesContient.contains(fautes.get(i))){corrections.add(correction1Mot(fautes.get(i),t));
+                System.out.println(corrections.get(i));}
+            else {i++;}
+            }
     }
 
     public ArrayList<String> correction1Mot(String word, Trigrams t){
