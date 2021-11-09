@@ -10,10 +10,8 @@ public class main {
         Correction c1 = new Correction(t1, fautes.dico);
         //correctionTest ct1 = new correctionTest("<abbatage>",t1);
         double fin = System.nanoTime();
-        double temps = (fin - debut)/1000000000;
         //System.out.println(ct1.correction);
-        //System.out.println("nombre de mots corrigés : "+c1.corrections.size());
-        System.out.println("le temps mis est : " + temps+ " secondes");
+        System.out.println("le temps mis est : " + (fin - debut)/1000000000+ " secondes");
         System.out.println(fautes.dico.size());
     }
 }

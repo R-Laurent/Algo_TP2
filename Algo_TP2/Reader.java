@@ -21,7 +21,4 @@ public class Reader {
         this.dico = new ArrayList<>(dico);
     }
 
-    public boolean test(String s){
-        return dico.contains(s);
-    }
 }
