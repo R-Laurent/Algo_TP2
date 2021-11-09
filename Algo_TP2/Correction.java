@@ -7,7 +7,7 @@ public class Correction {
         HashSet<String> fautesContient = new HashSet<>(fautes);
         for (int i=0;i<fautes.size();i++){
             if (fautesContient.contains(fautes.get(i))){corrections.add(correction1Mot(fautes.get(i),t));
-                System.out.println(corrections.get(i));}
+                System.out.println(fautes.get(i) +" : " + corrections.get(i));}
             else {i++;}
             }
     }
