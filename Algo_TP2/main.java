@@ -8,10 +8,7 @@ public class main {
         Reader fautes = new Reader("files/fautes.txt");
         Trigrams t1 = new Trigrams(dico);
         Correction c1 = new Correction(t1, fautes.dico);
-        //correctionTest ct1 = new correctionTest("<abbatage>",t1);
         double fin = System.nanoTime();
-        //System.out.println(ct1.correction);
-        System.out.println("le temps mis est : " + (fin - debut)/1000000000+ " secondes");
-        System.out.println(fautes.dico.size());
+        System.out.println("Le temps mis est : " + (fin - debut)/1000000000+ " secondes.");
     }
 }

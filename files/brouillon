@@ -1,3 +1,6 @@
+CE FICHIER SERT A SAUVEGARDER DU CODE QUI A ETE UTILISER MAIS QUI NE SERT PLUS
+
+
         HashMap<String,Integer> map = new HashMap<>();
         map.put("jul",2);
         map.put("koba",3);
